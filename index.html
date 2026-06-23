@@ -30,11 +30,7 @@
         body {
             min-height: 100vh;
             color: var(--ink);
-            background:
-                linear-gradient(90deg, rgba(24, 201, 255, 0.12) 0 1px, transparent 1px 100%),
-                linear-gradient(180deg, rgba(255, 63, 155, 0.08) 0 1px, transparent 1px 100%),
-                #bfc0c5;
-            background-size: 72px 72px;
+            background: var(--bg);
             font-family: "Pretendard", "Noto Sans KR", "Segoe UI", sans-serif;
             line-height: 1.65;
         }
@@ -49,33 +45,13 @@
             max-width: 100%;
         }
 
-        .side-note {
-            position: fixed;
-            top: 32px;
-            width: 72px;
-            color: rgba(24, 201, 255, 0.62);
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 0.72rem;
-            letter-spacing: 0.08em;
-            writing-mode: vertical-rl;
-            z-index: 3;
-            pointer-events: none;
-        }
-
-        .side-note.left {
-            left: 22px;
-        }
-
-        .side-note.right {
-            right: 22px;
-        }
-
         .page {
-            width: min(1360px, calc(100% - 16px));
-            margin: 8px auto;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
             background: var(--bg);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: none;
+            border: 0;
         }
 
         .nav {
@@ -86,7 +62,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 20px;
-            padding: 16px 34px;
+            padding: 18px clamp(24px, 4vw, 64px);
             background: rgba(5, 5, 5, 0.86);
             border-bottom: 1px solid var(--line);
             backdrop-filter: blur(12px);
@@ -126,7 +102,7 @@
 
         .section {
             position: relative;
-            padding: clamp(40px, 5vw, 64px) clamp(22px, 4.5vw, 62px);
+            padding: clamp(42px, 5vw, 72px) clamp(24px, 4vw, 64px);
             border-bottom: 8px solid var(--cyan);
             overflow: hidden;
         }
@@ -136,10 +112,10 @@
         }
 
         .hero {
-            min-height: 650px;
+            min-height: calc(100vh - 71px);
             display: grid;
             align-content: center;
-            padding-top: clamp(60px, 8vw, 96px);
+            padding-top: clamp(34px, 5vw, 70px);
         }
 
         .kicker {
@@ -173,27 +149,6 @@
             text-shadow:
                 0.022em 0.018em 0 var(--pink),
                 -0.012em 0.028em 0 rgba(24, 201, 255, 0.22);
-        }
-
-        .hero-name {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 14px;
-            width: min(680px, 100%);
-            margin: 28px 0 0 auto;
-            color: var(--cyan);
-            font-size: clamp(0.78rem, 1.35vw, 1rem);
-            font-weight: 900;
-            letter-spacing: 0.34em;
-            text-transform: uppercase;
-        }
-
-        .hero-name::before,
-        .hero-name::after {
-            content: "";
-            height: 1px;
-            background: var(--line);
         }
 
         .hero-summary {
@@ -433,16 +388,6 @@
         }
 
         @media (max-width: 860px) {
-            .side-note {
-                display: none;
-            }
-
-            .page {
-                width: 100%;
-                margin: 0;
-                border-inline: 0;
-            }
-
             .nav {
                 align-items: flex-start;
                 flex-direction: column;
@@ -458,17 +403,12 @@
             }
 
             .hero {
-                min-height: 570px;
+                min-height: calc(100vh - 121px);
             }
 
             .hero-title {
                 font-size: clamp(3.6rem, 17vw, 8rem);
                 letter-spacing: -0.08em;
-            }
-
-            .hero-name {
-                margin-left: 0;
-                letter-spacing: 0.18em;
             }
 
             .hero-summary,
@@ -500,9 +440,6 @@
     </style>
 </head>
 <body>
-    <div class="side-note left">DESIGN · UX/UI · XR</div>
-    <div class="side-note right">PORTFOLIO · 2026</div>
-
     <div class="page">
         <nav class="nav" aria-label="주요 메뉴">
             <a class="brand" href="#home">YoonJin Yang</a>
@@ -517,7 +454,6 @@
         <header class="section hero" id="home">
             <p class="kicker">Design Portfolio</p>
             <h1 class="hero-title" aria-label="Portfolio">Portfolio</h1>
-            <div class="hero-name">Yang Yoon Jin</div>
             <div class="hero-summary">
                 <p class="hero-copy">
                     <strong>디자인과 XR을 융합하여 새로운 경험을 만드는 디자이너</strong>

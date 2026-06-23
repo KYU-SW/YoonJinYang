@@ -3,24 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YoonJin Yang | Portfolio</title>
-    <!-- 폰트어썸 (아이콘) 무료 CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 구글 폰트 (Pretendard 대체용 널리 쓰이는 Noto Sans KR) -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+    <title>Yang Yoon Jin | Design Portfolio</title>
     <style>
         :root {
-            /* 세련된 다크 테마와 선명한 포인트 컬러 */
-            --primary-color: #10b981; 
-            --primary-light: #34d399;
-            --primary-dark: #064e3b;
-            --text-color: #f8fafc;
-            --text-light: #94a3b8;
-            --bg-color: #0a0a0a;
-            --card-bg: #171717;
-            --white: #ffffff;
-            --transition: all 0.3s ease;
+            --bg: #050505;
+            --cyan: #18c9ff;
+            --cyan-soft: #8be9ff;
+            --pink: #ff3f9b;
+            --ink: #f7fbff;
+            --muted: #a8b7bd;
+            --line: rgba(24, 201, 255, 0.42);
+            --panel: rgba(255, 255, 255, 0.03);
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
         }
 
         * {
@@ -29,453 +23,642 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            padding-top: 70px; /* 네비게이션 바 높이만큼 여백 */
+            min-height: 100vh;
+            color: var(--ink);
+            background:
+                linear-gradient(90deg, rgba(24, 201, 255, 0.12) 0 1px, transparent 1px 100%),
+                linear-gradient(180deg, rgba(255, 63, 155, 0.08) 0 1px, transparent 1px 100%),
+                #bfc0c5;
+            background-size: 72px 72px;
+            font-family: "Pretendard", "Noto Sans KR", "Segoe UI", sans-serif;
+            line-height: 1.65;
         }
 
-        /* Top Navigation Bar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #262626;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            z-index: 1000;
-        }
-
-        .nav-logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: -0.05rem;
-            color: var(--primary-color);
+        a {
+            color: inherit;
             text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .side-note {
+            position: fixed;
+            top: 32px;
+            width: 72px;
+            color: rgba(24, 201, 255, 0.62);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            writing-mode: vertical-rl;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .side-note.left {
+            left: 22px;
+        }
+
+        .side-note.right {
+            right: 22px;
+        }
+
+        .page {
+            width: min(1360px, calc(100% - 16px));
+            margin: 8px auto;
+            background: var(--bg);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 16px 34px;
+            background: rgba(5, 5, 5, 0.86);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            color: var(--cyan);
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .nav-links {
-            list-style: none;
             display: flex;
-            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 8px;
+            list-style: none;
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 400;
-            font-size: 0.9rem;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: var(--transition);
+            display: inline-flex;
+            min-height: 34px;
+            align-items: center;
+            padding: 6px 12px;
+            border: 1px solid transparent;
+            color: var(--muted);
+            font-size: 0.88rem;
         }
 
         .nav-links a:hover {
-            color: var(--white);
+            color: var(--cyan);
+            border-color: rgba(24, 201, 255, 0.42);
         }
 
-        .nav-links a.active {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: var(--bg-color);
-            color: var(--white);
-            padding: 8rem 2rem 6rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -0.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero .role {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: -3rem auto 3rem;
-            padding: 0 20px;
+        .section {
             position: relative;
-        }
-
-        /* About Section */
-        .about-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 2.5rem;
-            border: 1px solid #262626;
-            margin-bottom: 3rem;
-            text-align: left;
-        }
-
-        .about-card h2, .about-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .vision-box {
-            margin-top: 2.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #262626;
-        }
-
-        .vision-box h3 {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-        }
-
-        /* Cards Layout (CSS Grid) */
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--text-color);
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.05rem;
-            text-transform: uppercase;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
+            padding: clamp(40px, 5vw, 64px) clamp(22px, 4.5vw, 62px);
+            border-bottom: 8px solid var(--cyan);
             overflow: hidden;
-            border: 1px solid #262626;
-            transition: var(--transition);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
+        .section + .section {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .card-img {
+        .hero {
+            min-height: 650px;
+            display: grid;
+            align-content: center;
+            padding-top: clamp(60px, 8vw, 96px);
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 18px;
+            color: var(--cyan);
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .kicker::before {
+            content: "+";
+            color: var(--pink);
+            font-size: 1.35rem;
+            line-height: 1;
+        }
+
+        .hero-title {
             width: 100%;
-            height: 200px;
+            color: var(--cyan);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(5rem, 15.8vw, 13rem);
+            font-weight: 700;
+            line-height: 0.82;
+            letter-spacing: -0.095em;
+            white-space: nowrap;
+            text-shadow:
+                0.022em 0.018em 0 var(--pink),
+                -0.012em 0.028em 0 rgba(24, 201, 255, 0.22);
+        }
+
+        .hero-name {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 14px;
+            width: min(680px, 100%);
+            margin: 28px 0 0 auto;
+            color: var(--cyan);
+            font-size: clamp(0.78rem, 1.35vw, 1rem);
+            font-weight: 900;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+        }
+
+        .hero-name::before,
+        .hero-name::after {
+            content: "";
+            height: 1px;
+            background: var(--line);
+        }
+
+        .hero-summary {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(230px, 310px);
+            gap: 28px;
+            align-items: end;
+            margin-top: 34px;
+        }
+
+        .hero-copy {
+            max-width: 710px;
+            color: var(--muted);
+            font-size: clamp(1rem, 1.6vw, 1.12rem);
+            word-break: keep-all;
+        }
+
+        .hero-copy strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--ink);
+            font-size: clamp(1.12rem, 2vw, 1.36rem);
+            font-weight: 700;
+        }
+
+        .label-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            min-height: 32px;
+            padding: 5px 10px;
+            background: var(--cyan);
+            color: #001018;
+            font-size: 0.82rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .section-heading {
+            margin-bottom: 24px;
+        }
+
+        .section-heading h2 {
+            color: var(--cyan);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(1.8rem, 3.6vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+
+        .section-content {
+            margin-left: 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.92fr;
+            gap: 18px;
+        }
+
+        .profile-panel,
+        .info-panel,
+        .project-card,
+        .contact-panel {
+            border: 1px solid rgba(24, 201, 255, 0.32);
+            background: var(--panel);
+        }
+
+        .profile-panel,
+        .info-panel {
+            padding: 24px;
+        }
+
+        .profile-panel h3,
+        .info-panel h3 {
+            margin-bottom: 12px;
+            color: var(--cyan);
+            font-size: 1.02rem;
+        }
+
+        .profile-panel p,
+        .info-panel p {
+            color: var(--muted);
+            word-break: keep-all;
+        }
+
+        .profile-panel p + p {
+            margin-top: 12px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            min-height: 100%;
+            overflow: hidden;
+        }
+
+        .project-media {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: #111;
+            overflow: hidden;
+        }
+
+        .project-media img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            filter: saturate(1.08) contrast(1.03);
+            transition: transform 0.35s ease;
         }
 
-        .card-content {
-            padding: 1.5rem;
+        .project-card:hover img {
+            transform: scale(1.035);
         }
 
-        .card-content i {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        .project-body {
+            padding: 20px;
         }
 
-        .card-content h3 {
-            margin-bottom: 0.8rem;
-            color: var(--text-color);
+        .project-type {
+            display: inline-flex;
+            margin-bottom: 10px;
+            color: var(--cyan);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
-        .card-content p {
-            color: var(--text-light);
-            font-size: 0.95rem;
+        .project-body h3 {
+            margin-bottom: 10px;
+            font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+            line-height: 1.12;
+            letter-spacing: -0.01em;
         }
 
-        .card-content ul {
-            list-style: none;
-            margin-top: 0.8rem;
-            font-size: 0.85rem;
-            color: var(--text-light);
+        .project-body p {
+            color: var(--muted);
+            font-size: 0.96rem;
+            word-break: keep-all;
         }
 
-        /* Courses Table */
-        .table-container {
-            overflow-x: auto;
-            background: var(--card-bg);
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            border: 1px solid #262626;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #262626;
-        }
-        th {
-            background: #262626;
-            color: var(--white);
+        .skills-strip {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            background: rgba(24, 201, 255, 0.3);
+            border: 1px solid rgba(24, 201, 255, 0.3);
         }
 
-        /* Contact Section */
-        .contact-section {
-            text-align: center;
-            background: var(--card-bg);
-            padding: 3rem;
-            border-radius: 12px;
-            border: 1px solid #262626;
+        .skills-strip div {
+            min-height: 112px;
+            padding: 18px;
+            background: var(--bg);
+        }
+
+        .skills-strip b {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--cyan);
+        }
+
+        .skills-strip span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .contact-panel {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 28px;
+            align-items: center;
+            padding: clamp(28px, 5vw, 52px);
+        }
+
+        .contact-panel h2 {
+            color: var(--cyan);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.4rem, 5.5vw, 5rem);
+            font-weight: 400;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+        }
+
+        .contact-panel h2 span {
+            color: var(--pink);
         }
 
         .contact-links {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: flex-end;
         }
 
-        .btn {
+        .button {
             display: inline-flex;
+            min-height: 42px;
             align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
+            justify-content: center;
+            padding: 9px 16px;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            font-weight: 800;
         }
 
-        .btn-outline {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .btn-fill {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .btn-fill:hover {
-            background: var(--primary-dark);
-        }
-
-        /* Info Grid (Skills & Activities) */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .info-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid #262626;
-        }
-        .info-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
-            border-bottom: 1px solid #262626;
-            padding-bottom: 0.5rem;
-        }
-        .list-unstyled {
-            list-style: none;
-        }
-        .list-unstyled li {
-            margin-bottom: 0.5rem;
+        .button.primary {
+            background: var(--cyan);
+            color: #001018;
         }
 
         footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid #262626;
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 22px 34px;
+            color: rgba(247, 251, 255, 0.58);
+            font-size: 0.86rem;
+        }
+
+        @media (max-width: 1100px) {
+            .project-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 860px) {
+            .side-note {
+                display: none;
+            }
+
+            .page {
+                width: 100%;
+                margin: 0;
+                border-inline: 0;
+            }
+
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 14px 20px;
+            }
+
+            .nav-links {
+                justify-content: flex-start;
+            }
+
+            .section {
+                padding-inline: 22px;
+            }
+
+            .hero {
+                min-height: 570px;
+            }
+
+            .hero-title {
+                font-size: clamp(3.6rem, 17vw, 8rem);
+                letter-spacing: -0.08em;
+            }
+
+            .hero-name {
+                margin-left: 0;
+                letter-spacing: 0.18em;
+            }
+
+            .hero-summary,
+            .section-heading,
+            .about-grid,
+            .contact-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .section-content {
+                margin-left: 0;
+            }
+
+            .label-row,
+            .contact-links {
+                justify-content: flex-start;
+            }
+
+            .project-grid,
+            .skills-strip {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="side-note left">DESIGN · UX/UI · XR</div>
+    <div class="side-note right">PORTFOLIO · 2026</div>
 
-<!-- Top Navigation -->
-<nav class="navbar">
-    <a href="#" class="nav-logo">YoonJin Portfolio</a>
-    <ul class="nav-links">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
+    <div class="page">
+        <nav class="nav" aria-label="주요 메뉴">
+            <a class="brand" href="#home">YoonJin Yang</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-<!-- Hero Section -->
-<header class="hero" id="home">
-    <h1>Yang Yoon Jin</h1>
-    <p class="role">디자인과 XR을 융합하여 새로운 경험을 만드는 디자이너</p>
-    <p style="opacity: 0.9; max-width: 700px; margin: 1rem auto;">사용자 경험을 중심으로 UX/UI 디자인, XR 콘텐츠, 게임 콘텐츠를 기획하고 제작합니다.</p>
-</header>
-
-<main class="container">
-    <!-- About Section -->
-    <section class="about-card" id="about">
-        <h2><i class="fa-solid fa-user"></i> About Me</h2>
-        <p>안녕하세요. 건양대학교 융합디자인학과와 국방 XR학부를 융합전공하고 있는 <strong>양윤진</strong>입니다.</p>
-        <p style="margin-top: 10px;">UX/UI 디자인, 게임 콘텐츠 제작, XR 콘텐츠에 관심을 가지고 있으며, 사용자의 경험을 고려한 서비스를 설계하는 것을 좋아합니다. 새로운 아이디어를 시각적으로 구현하고 문제를 해결하는 과정에서 큰 즐거움을 느끼며 다양한 프로젝트를 통해 디자인 역량을 키워가고 있습니다.</p>
-        
-        <div class="vision-box">
-            <h3><i class="fa-solid fa-lightbulb"></i> Vision</h3>
-            <p>사람들의 일상 속 문제를 발견하고 디자인으로 해결하는 디자이너가 되고 싶습니다. 단순히 보기 좋은 디자인을 넘어 사용자에게 의미 있는 경험을 제공하고, 사회에 긍정적인 영향을 줄 수 있는 서비스를 만드는 것이 목표입니다.</p>
-        </div>
-    </section>
-
-    <h2 class="section-title" id="projects">Projects</h2>
-    
-    <!-- Cards Section -->
-    <section class="card-grid">
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1579621970563-9d0ad2d1ce00?auto=format&fit=crop&w=600&q=80" alt="WithB" class="card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-robot"></i>
-                <h3>WithB</h3>
-                <p><strong>AI 소비 조언 기반 가계부 앱</strong></p>
-                <ul>
-                    <li>• 역할: 서비스 기획, UX/UI 설계, 와이어프레임</li>
-                    <li>• 기능: AI 소비 분석 및 맞춤형 피드백</li>
-                </ul>
+        <header class="section hero" id="home">
+            <p class="kicker">Design Portfolio</p>
+            <h1 class="hero-title" aria-label="Portfolio">Portfolio</h1>
+            <div class="hero-name">Yang Yoon Jin</div>
+            <div class="hero-summary">
+                <p class="hero-copy">
+                    <strong>디자인과 XR을 융합하여 새로운 경험을 만드는 디자이너</strong>
+                    사용자 경험을 중심으로 UX/UI 디자인, XR 콘텐츠, 게임 콘텐츠를 기획하고 제작합니다.
+                </p>
+                <div class="label-row" aria-label="핵심 분야">
+                    <span class="tag">UX/UI</span>
+                    <span class="tag">Graphic</span>
+                    <span class="tag">XR Content</span>
+                    <span class="tag">Game</span>
+                </div>
             </div>
-        </article>
+        </header>
 
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1552521481-8155cce4c3fd?auto=format&fit=crop&w=600&q=80" alt="하루Yelda" class="card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-clock"></i>
-                <h3>하루Yelda</h3>
-                <p><strong>아침 루틴 관리 앱</strong></p>
-                <ul>
-                    <li>• 역할: 서비스 기획, 브랜드 네이밍, UI 디자인</li>
-                    <li>• 기능: 체크리스트, 알림, 날씨 기반 추천</li>
-                </ul>
-            </div>
-        </article>
+        <main>
+            <section class="section" id="about">
+                <div class="section-heading">
+                    <h2>About me</h2>
+                </div>
+                <div class="about-grid section-content">
+                    <article class="profile-panel">
+                        <h3>About Me</h3>
+                        <p>
+                            안녕하세요. 건양대학교 융합디자인학과와 국방 XR학부를 융합전공하고 있는 양윤진입니다.
+                        </p>
+                        <p>
+                            UX/UI 디자인, 게임 콘텐츠 제작, XR 콘텐츠에 관심을 가지고 있으며, 사용자의 경험을 고려한 서비스를 설계하는 것을 좋아합니다.
+                            새로운 아이디어를 시각적으로 구현하고 문제를 해결하는 과정에서 큰 즐거움을 느끼며 다양한 프로젝트를 통해 디자인 역량을 키워가고 있습니다.
+                        </p>
+                    </article>
+                    <aside class="info-panel">
+                        <h3>Vision</h3>
+                        <p>
+                            사람들의 일상 속 문제를 발견하고 디자인으로 해결하는 디자이너가 되고 싶습니다.
+                            단순히 보기 좋은 디자인을 넘어 사용자에게 의미 있는 경험을 제공하고, 사회에 긍정적인 영향을 줄 수 있는 서비스를 만드는 것이 목표입니다.
+                        </p>
+                    </aside>
+                </div>
+            </section>
 
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1631217314831-c6227db76b6e?auto=format&fit=crop&w=600&q=80" alt="MediQuick" class="card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-file-medical"></i>
-                <h3>MediQuick</h3>
-                <p><strong>응급상황 대처 서비스</strong></p>
-                <ul>
-                    <li>• 역할: UX/UI 기획, 캐릭터 디자인</li>
-                    <li>• 기능: 응급처치 및 의료기관 정보 제공</li>
-                </ul>
-            </div>
-        </article>
+            <section class="section" id="projects">
+                <div class="section-heading">
+                    <h2>Projects</h2>
+                </div>
 
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1538481143081-7237cddc8c40?auto=format&fit=crop&w=600&q=80" alt="Roblox" class="card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-cube"></i>
-                <h3>Harry Potter Platform 9¾</h3>
-                <p><strong>Roblox 기반 메타버스</strong></p>
-                <ul>
-                    <li>• 담당: 기차/맵 구현, GUI 디자인, 시작 화면</li>
-                    <li>• 특징: 호그와트 익스프레스 인터랙션 구현</li>
-                </ul>
-            </div>
-        </article>
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1565958011457-ce63c631a824?auto=format&fit=crop&w=600&q=80" alt="Lifetone" class="card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-book-open"></i>
-                <h3>Lifetone</h3>
-                <p><strong>잡지 창간 프로젝트</strong></p>
-                <ul>
-                    <li>• 역할: 패션 액세서리, 주얼리 & 워치 꼭지 디자인 작업</li>
-                    <li>• 특징: 팬톤의 사외보로 매달 이달의 컬러를 선정하여 추천 아이템 소개</li>
-                </ul>
-            </div>
-        </article>
-    </section>
+                <div class="project-grid section-content">
+                    <article class="project-card">
+                        <div class="project-media">
+                            <img src="위드비.png" alt="WithB 프로젝트 이미지">
+                        </div>
+                        <div class="project-body">
+                            <span class="project-type">UX/UI Service</span>
+                            <h3>WithB</h3>
+                            <p>AI 소비 조언을 기반으로 가계부 사용 경험을 설계한 서비스 UX/UI 프로젝트입니다.</p>
+                        </div>
+                    </article>
 
-    <h2 class="section-title">Academic & Skills</h2>
-    
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>수강 과목</th>
-                    <th>학습 내용</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>시각디자인Ⅰ</td><td>잡지 창간 프로젝트로 편집디자인 기법 습득</td></tr>
-                <tr><td>메타버스 프로그래밍</td><td>Roblox Studio 기반 공간 제작 및 루아 스크립트 활용</td></tr>
-                <tr><td>XR콘텐츠문화지형도</td><td>XR 콘텐츠의 기획적 접근 및 국내외 사례 분석</td></tr>
-                <tr><td>실감미디어컴퓨팅개론</td><td>XR 10대 기술 등 실감미디어 기술의 이해</td></tr>
-            </tbody>
-        </table>
+                    <article class="project-card">
+                        <div class="project-media">
+                            <img src="메디퀵.jpg" alt="MediQuick 프로젝트 이미지">
+                        </div>
+                        <div class="project-body">
+                            <span class="project-type">Emergency UX</span>
+                            <h3>MediQuick</h3>
+                            <p>응급상황에서 필요한 처치 정보와 의료기관 정보를 빠르게 찾도록 설계한 UX/UI 프로젝트입니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <img src="하루열다.png" alt="하루열다 프로젝트 이미지">
+                        </div>
+                        <div class="project-body">
+                            <span class="project-type">Routine App</span>
+                            <h3>하루열다</h3>
+                            <p>아침 루틴을 쉽게 시작할 수 있도록 체크리스트와 알림 흐름을 구성한 앱 프로젝트입니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <img src="라이프톤.png" alt="Lifetone 프로젝트 이미지">
+                        </div>
+                        <div class="project-body">
+                            <span class="project-type">Editorial</span>
+                            <h3>Lifetone</h3>
+                            <p>매달의 컬러를 바탕으로 패션 액세서리와 라이프스타일 아이템을 제안한 잡지 프로젝트입니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <img src="3D 모델링.png" alt="Nintendo Switch OLED 3D 모델링 렌더링">
+                        </div>
+                        <div class="project-body">
+                            <span class="project-type">Product / 3D</span>
+                            <h3>Nintendo switch</h3>
+                            <p>닌텐도 스위치 OLED 외관과 개인 맞춤형 데스크 셋업을 모델링한 제품 렌더링 프로젝트입니다.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <img src="메타버스.png" alt="Roblox 메타버스 프로젝트 이미지">
+                        </div>
+                        <div class="project-body">
+                            <span class="project-type">Metaverse</span>
+                            <h3>Harry Potter Platform 9¾</h3>
+                            <p>Roblox Studio를 활용해 공간, GUI, 인터랙션을 구성한 메타버스 콘텐츠입니다.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="skills">
+                <div class="section-heading">
+                    <h2>Skills</h2>
+                </div>
+                <div class="skills-strip section-content">
+                    <div><b>Design</b><span>Figma, Illustrator, Photoshop, InDesign</span></div>
+                    <div><b>3D/XR</b><span>Rhino, Blender, Roblox Studio</span></div>
+                    <div><b>Planning</b><span>UX Research, Service Flow, Wireframe</span></div>
+                    <div><b>Visual</b><span>Brand Mood, Editorial Layout, Rendering</span></div>
+                </div>
+            </section>
+
+            <section class="section" id="contact">
+                <div class="contact-panel">
+                    <h2>Thank<span>You</span></h2>
+                    <div class="contact-links">
+                        <a class="button primary" href="mailto:dbswls6141@gmail.com">Email</a>
+                        <a class="button" href="https://instagram.com/y_y0_0n_n" target="_blank" rel="noreferrer">Instagram</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Design Portfolio by Yang Yoon Jin</p>
+            <p>© 2026</p>
+        </footer>
     </div>
-
-    <div class="info-grid">
-        <div class="info-card">
-            <h3><i class="fa-solid fa-screwdriver-wrench"></i> Skills & Interests</h3>
-            <p><strong>Design:</strong> Figma, Adobe Illustrator, Photoshop, InDesign</p>
-            <p style="margin-top: 10px;"><strong>3D/XR:</strong> Blender, Roblox Studio</p>
-            <ul class="list-unstyled" style="margin-top: 15px; color: var(--text-light);">
-                <li>#UX/UI_Design #XR_Content #Game_Content</li>
-                <li>#3D_Modeling #Branding</li>
-            </ul>
-        </div>
-        
-        <div class="info-card">
-            <h3><i class="fa-solid fa-award"></i> Activities & Education</h3>
-            <p><strong>Training:</strong></p>
-            <ul class="list-unstyled">
-                <li>• CPS 과정 수료 (Illustrator, InDesign, Blender)</li>
-                <li>• Adobe 자격증 과정 수료 예정 (Photoshop, Premiere Pro)</li>
-            </ul>
-            <p style="margin-top: 10px;"><strong>Clubs:</strong></p>
-            <ul class="list-unstyled">
-                <li>• (스케이트)보드 동아리 DECK & 보드게임 친목 동아리 Soulmate 활동</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <h2>Let's Connect</h2>
-        <p style="margin-top: 10px; color: var(--text-light);">사용자에게 가치 있는 경험을 함께 만들어갈 기회를 기다립니다.</p>
-        <div class="contact-links">
-            <a href="mailto:dbswls6141@gmail.com" class="btn btn-fill">
-                <i class="fa-solid fa-envelope"></i> Email Me
-            </a>
-            <a href="https://instagram.com/y_y0_0n_n" class="btn btn-outline" target="_blank">
-                <i class="fa-brands fa-instagram"></i> Instagram
-            </a>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <p>&copy; 2026 YoonJin Yang. All rights reserved.</p>
-</footer>
-
 </body>
 </html>
